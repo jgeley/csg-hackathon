@@ -30,6 +30,7 @@
                 <md-tab label="Upload">
                     <md-content class="md-padding">
 
+                        <section layout="column" layout-sm="row" ladout-alignt="center center" layout-wrap>
                         <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                             <md-card>
                                 <md-card-title>
@@ -44,11 +45,10 @@
                                         <br /> Drop files:
                                         <div ngf-drop ng-model="files" class="drop-box md-media-xl card-media" style="width: 200px;height:200px; background-color:grey;"></div>
                                         <br />
-                                        <button type="submit" ng-click="submit()">submit</button>
+                                        <button type="submit" ng-click="submit()">Submit</button>
                                         <label>{{file.name}}</label>
                                     </form>
                                 </md-card-content>
-                            </md-card>
                             <md-card>
                                 <md-card-title>
                                     <md-card-title-text>
@@ -56,11 +56,33 @@
                                     </md-card-title-text>
                                 </md-card-title>
                                 <br />
-                                <md-card-content layout="row" layout-align="space-between">
+                                <md-card-content layout="column" layout-align="space-between">
                                     <video controls ngf-src="file"></video>
                                 </md-card-content>
                             </md-card>
+                            </md-card>
+
                         </section>
+							<md-card>
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">Upload Iso</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                                <md-card-content layout="row" layout-align="space-between">
+                                    <form name="form">
+                                        Upload Iso by browsing:
+                                        <md-button ngf-select ng-model="file" name="file" ngf-min-height="100">Browse</md-button>
+                                        <br /> Drop files:
+                                        <div ngf-drop ng-model="files" class="drop-box md-media-xl card-media" style="width: 200px;height:200px; background-color:grey;"></div>
+                                        <br />
+                                        <button type="submit" ng-click="submit()">Convert!</button>
+                                        <label>{{file.name}}</label>
+                                    </form>
+                                </md-card-content>
+                            </md-card>
+                        </section>
+
                     </md-content>
                 </md-tab>
                 <md-tab label="Control">
