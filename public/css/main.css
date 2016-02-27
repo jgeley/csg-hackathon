@@ -1,0 +1,11 @@
+.md-toolbar-tools h1 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: inherit;
+}
+
+.animatestuff {
+  -webkit-animation-duration: 1s;
+/*  -webkit-animation-delay: .5s;*/
+}
+}
