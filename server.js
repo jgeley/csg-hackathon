@@ -43,6 +43,14 @@ app.set('views', __dirname + '/public');
 require('./app/routes.js')(app);// configure our routes
 
 app.listen(port);
+
+app.get('/control/start', function(req, res) {
+  console.log('do start');
+});
+
+app.get('/control/stop', function(req, res) {
+  console.log('do stop');
+});
                    
 console.log('Magic happens on port ' + port);
           

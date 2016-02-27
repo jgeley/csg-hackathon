@@ -9,102 +9,51 @@
     <meta name="viewport" content="initial-scale=1" />
 </head>
 
-<body layout="column" ng-controller="AppCtrl as appc">
-<!--    <div>{{appc.message}}</div>-->
+<body layout="column" ng-controller="AppCtrl as ctrl">
 
+    <!--
     <md-toolbar class="md-menu-toolbar">
         <div layout="row">
             <div>
                 <h2 class="md-toolbar-tools">Syncronyzed Viewing App</h2>
                 <md-menu-bar>
-                    <md-menu>
-                        <button ng-click="ctrl.sampleAction('watch', $event)">
+                    <md-menu class='active'>
+                        <button class='active' ng-click="ctrl.sampleAction('home', $event)">
                             Home
                         </button>
                         <md-menu-content>
-                            <md-menu-item>
-                                <md-button ng-click="ctrl.sampleAction('share', $event)">
-                                    Share...
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-divider></md-menu-divider>
-                            <md-menu-item>
-                                <md-menu>
-                                    <md-button ng-click="$mdOpenMenu()">New</md-button>
-                                    <md-menu-content>
-                                        <md-menu-item>
-                                            <md-button ng-click="ctrl.sampleAction('New Document', $event)">Document</md-button>
-                                        </md-menu-item>
-                                        <md-menu-item>
-                                            <md-button ng-click="ctrl.sampleAction('New Spreadsheet', $event)">Spreadsheet</md-button>
-                                        </md-menu-item>
-                                        <md-menu-item>
-                                            <md-button ng-click="ctrl.sampleAction('New Presentation', $event)">Presentation</md-button>
-                                        </md-menu-item>
-                                        <md-menu-item>
-                                            <md-button ng-click="ctrl.sampleAction('New Form', $event)">Form</md-button>
-                                        </md-menu-item>
-                                        <md-menu-item>
-                                            <md-button ng-click="ctrl.sampleAction('New Drawing', $event)">Drawing</md-button>
-                                        </md-menu-item>
-                                    </md-menu-content>
-                                </md-menu>
                             </md-menu-item>
                             <md-menu-item>
                                 <md-button ng-click="ctrl.sampleAction('Open', $event)">
-                                    Open...
+                                    
                             </md-menu-item>
                             <md-menu-item>
                                 <md-button disabled="disabled" ng-click="ctrl.sampleAction('Rename', $event)">
-                                    Rename
+                                    
                                 </md-button>
                             </md-menu-item>
                             <md-menu-divider></md-menu-divider>
                             <md-menu-item>
                                 <md-button ng-click="ctrl.sampleAction('Print', $event)">
-                                    Print
+                                    
                                 </md-button>
                             </md-menu-item>
                         </md-menu-content>
                     </md-menu>
                     <md-menu>
-                        <button ng-click="ctrl.sampleAction('watch', $event)">
-                            Watch
+                        <button ng-click="ctrl.sampleAction('control', $event)">
+                            Control
                         </button>
                         <md-menu-content>
                             <md-menu-item class="md-indent">
                                 <md-button ng-click="ctrl.sampleAction('undo', $event)">
-                                    Undo
+                                    
                                 </md-button>
                             </md-menu-item>
                             <md-menu-item class="md-indent">
                              
                                 <md-button ng-click="ctrl.sampleAction('redo', $event)">
-                                    Redo
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-divider></md-menu-divider>
-                            <md-menu-item class="md-indent">
-                                
-                                <md-button ng-click="ctrl.sampleAction('cut', $event)">
-                                    Cut
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item class="md-indent">
-                                
-                                <md-button ng-click="ctrl.sampleAction('copy', $event)">
-                                    Copy
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item class="md-indent">
-                                <md-button ng-click="ctrl.sampleAction('paste', $event)">
-                                    Paste
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-divider></md-menu-divider>
-                            <md-menu-item class="md-indent">
-                                <md-button ng-click="ctrl.sampleAction('Find and replace', $event)">
-                                    Find and replace...
+                                    
                                 </md-button>
                             </md-menu-item>
                         </md-menu-content>
@@ -113,14 +62,40 @@
             </div>
         </div>
     </md-toolbar>
-    <!-- Angular Material Dependencies -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+-->
+    <div ng-cloak>
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Home">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Home</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Control">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Control</h1>
+                        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                            <md-button ng-click="ctrl.sampleAction('start', $event)" class="md-raised">Start</md-button>
+                            <md-button ng-click="ctrl.sampleAction('stop', $event)" class="md-raised">Stop</md-button>
 
-  <!-- Angular Material Library -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+                        </section>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+    <div ui-view></div>
+    <!-- Angular Material Dependencies -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+
+
+    <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    <script src="js/angular-ui-router.js"></script>
     <script src="js/app.module.js"></script>
 
 </body>
