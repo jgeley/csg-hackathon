@@ -15,7 +15,7 @@ UserController.prototype.uploadFile = function(req, res) {
 
     console.log("The file was saved!");
 }); 
-    fs.createReadStream(file.path).pipe(fs.createWriteStream(__dirname+'/uploads/' + file.name ));
+    fs.createReadStream(file.path).pipe(fs.createWriteStream(__dirname+'/../public/uploads/' + file.name ));
 }
 
 module.exports = new UserController();

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/main.css">-->
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/videogular.css">
     <meta name="viewport" content="initial-scale=1" />
 </head>
 
@@ -44,7 +45,7 @@
                                         <div ngf-drop ng-model="files" class="drop-box md-media-xl card-media" style="width: 200px;height:200px; background-color:grey;"></div>
                                         <br />
                                         <button type="submit" ng-click="submit()">submit</button>
-                                        <label >{{file.name}}</label>
+                                        <label>{{file.name}}</label>
                                     </form>
                                 </md-card-content>
                             </md-card>
@@ -59,62 +60,79 @@
                                     <video controls ngf-src="file"></video>
                                 </md-card-content>
                             </md-card>
-                            <!--
-                            <form name="form">
-                                Single Image with validations
-                                <md-button ngf-select ng-model="file" name="file" ngf-min-height="100">Select</md-button>
-                                <br /> Multiple files
-                                <md-button ngf-select ng-model="files" ngf-multiple="true">Select</md-button>
-                                <br /> Drop files:
-                                <div ngf-drop ng-model="files" class="drop-box">Drop</div>
-                                <br />
-                                <button type="submit" ng-click="submit()">submit</button>
-                            </form>
-
-                            Upload right away after file selection:
-                            <md-button ngf-select="upload($file)">Upload on file select</md-button>
-                            <br />
-                            <md-button ngf-select="uploadFiles($files)" multiple="multiple">Upload on file select</md-button>
-                            <br /> Drop File:
-                            <div ngf-drop="uploadFiles($files)" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-pattern="'image/*,application/pdf'">Drop Images or PDFs files here</div>
-                            <br />
-                            <div ngf-no-file-drop>File Drag/Drop is not supported for this browser
-                                </div<br /> Image thumbnail: <img ngf-thumbnail="file || '/thumb.jpg'"> Audio preview:
-                                <audio controls ngf-src="file"></audio>
-                                <br /> Video preview:
-                                <video controls ngf-src="file"></video>
--->
-
                         </section>
                     </md-content>
                 </md-tab>
                 <md-tab label="Control">
-                    <md-content class="md-padding">
-                        <h1 class="md-display-2">Control</h1>
-                        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                            <md-button ng-click="ctrl.sampleAction('start', $event)" class="md-raised">Start</md-button>
-                            <md-button ng-click="ctrl.sampleAction('stop', $event)" class="md-raised">Stop</md-button>
+                    <md-content class="md-padding" layout-xs="column" layout="row">
+                        <!--                        <div flex-xs flex-gt-xs="50" layout="column">-->
+                        <md-card>
+                            <md-card-content layout="row" layout-align="space-between">
+                                <videogular vg-theme="ctrl.config.theme" vg-player-ready="onPlayerReady($API)">
+                                    <vg-media vg-src="ctrl.config.sources" vg-tracks="ctrl.config.tracks">
+                                    </vg-media>
 
-                        </section>
+                                    <vg-controls>
+                                        <vg-play-pause-button></vg-play-pause-button>
+                                        <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+                                        <vg-scrub-bar>
+                                            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                        </vg-scrub-bar>
+                                        <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+                                        <vg-volume>
+                                            <vg-mute-button></vg-mute-button>
+                                            <vg-volume-bar></vg-volume-bar>
+                                        </vg-volume>
+                                        <vg-fullscreen-button></vg-fullscreen-button>
+                                    </vg-controls>
+
+                                    <vg-overlay-play></vg-overlay-play>
+                                    <vg-poster vg-url='ctrl.config.plugins.poster'></vg-poster>
+                                </videogular>
+
+                            </md-card-content>
+                        </md-card>
+                        <md-card>
+                            <md-card-content layout="row" layout-align="space-between">
+                                <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                                    <div ng-repeat="i in names">
+                                        <md-button class="md-raised md-primary">
+                                            {{i}}
+                                        </md-button>
+                                    </div>
+
+                                </section>
+                            </md-card-content>
+                        </md-card>
+
                     </md-content>
-                </md-tab>
-<<<<<<< HEAD
+                    {{API.currentState}}
+                    <md-button ng-click="ctrl.sampleAction('start', $event)" class="md-raised">Start</md-button>
+                    <md-button ng-click="ctrl.sampleAction('stop', $event)" class="md-raised">Stop</md-button>
 
-=======
+
+                </md-tab>
+
                 <md-tab label="About Us">
                     <md-content class="md-padding">
                         <section>
                             <h1 class="md-display-2">About Us</h1>
                             <h4>James Percivel</h4>
-                            <p> <!-- Info --></p>
+                            <p>
+                                <!-- Info -->
+                            </p>
                             <h4>Joesph Eley</h4>
-                            <p> <!-- Info --></p>
+                            <p>
+                                <!-- Info -->
+                            </p>
                             <h4>Casey Largent</h4>
-                            <p>Casey is a freshman at UNO studying Information Assurance.<br>He is involved in many organizations on campus, including Nullify and ACM.<br>This is his first hackathon.</p>
+                            <p>Casey is a freshman at UNO studying Information Assurance.
+                                <br>He is involved in many organizations on campus, including Nullify and ACM.
+                                <br>This is his first hackathon.</p>
                         </section>
                     </md-content>
                 </md-tab>
->>>>>>> cb16ec5c3c66cbf4283503fbc8ef1218ed6a15da
+
             </md-tabs>
         </md-content>
     </div>
@@ -124,12 +142,20 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="js/sanitize.js"></script>
 
 
     <!-- Angular Material Library -->
     <script src="js/ng-file-upload-all.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
     <script src="js/angular-ui-router.js"></script>
+    <script src="js/videogular.js"></script>
+    <script src="js/vg-analytics.js"></script>
+    <script src="js/vg-buffering.js"></script>
+    <script src="js/vg-controls.js"></script>
+    <script src="js/vg-ima-ads.js"></script>
+    <script src="js/vg-overlay-play.js"></script>
+    <script src="js/vg-poster.js"></script>
     <script src="js/app.module.js"></script>
 
 </body>

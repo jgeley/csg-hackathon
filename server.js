@@ -7,6 +7,7 @@ var bCrypt = require('bcrypt-nodejs');
 var flash = require('connect-flash');
 var multer = require('multer');
 var storage = multer.memoryStorage();
+var send = require('send')
 var upload = multer({
     storage: storage
 });
@@ -69,19 +70,19 @@ app.get('/control/start', function (req, res) {
 app.get('/control/stop', function (req, res) {
     console.log('do stop');
 });
+
+app.get('/names',function(req,res){
+    console.log(fs.readdirSync(__dirname + '/public/uploads/'));
+    res.send(fs.readdirSync(__dirname + '/public/uploads/'));
+});
+
 app.post('/upload/url',  multipartyMiddleware, UserController.uploadFile);
-//app.post('/upload/url', function (req, res) {
-//    console.log(req['_readableState'].buffer);
-//
-//
-//
-//    fs.writeFile('public/uploads/image.jpg', req['_readableState'].buffer, 'ascii',
-//        function (err) {
-//            if (err) throw err;
-//            console.log('It\'s saved!');
-//        }
-//    );
-//});
+
+app.post('/currentstate',function (req,res){
+    console.log('currentState');
+})
+
+
 
 console.log('Magic happens on port ' + port);
 
