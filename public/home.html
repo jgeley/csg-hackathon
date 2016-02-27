@@ -10,13 +10,13 @@
 </head>
 
 <body layout="column" ng-controller="AppCtrl as ctrl">
- <md-toolbar>
+    <md-toolbar>
         <div class="md-toolbar-tools">
             <span flex></span>
             <md-button class="md-raised" href="/logout" style="width:100px;">Logout</md-button>
         </div>
     </md-toolbar>
-     
+
     <div ng-cloak>
         <md-content>
             <md-tabs md-dynamic-height md-border-bottom>
@@ -24,6 +24,68 @@
                     <md-content class="md-padding">
                         <h1 class="md-display-2">Home</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Upload">
+                    <md-content class="md-padding">
+
+                        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                            <md-card>
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">Upload Media</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                                <md-card-content layout="row" layout-align="space-between">
+                                    <form name="form">
+                                        Upload Media by browsing:
+                                        <md-button ngf-select ng-model="file" name="file" ngf-min-height="100">Browse</md-button>
+                                        <br /> Drop files:
+                                        <div ngf-drop ng-model="files" class="drop-box md-media-xl card-media" style="width: 200px;height:200px; background-color:grey;"></div>
+                                        <br />
+                                        <button type="submit" ng-click="submit()">submit</button>
+                                        <label >{{file.name}}</label>
+                                    </form>
+                                </md-card-content>
+                            </md-card>
+                            <md-card>
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">Preview</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                                <br />
+                                <md-card-content layout="row" layout-align="space-between">
+                                    <video controls ngf-src="file"></video>
+                                </md-card-content>
+                            </md-card>
+                            <!--
+                            <form name="form">
+                                Single Image with validations
+                                <md-button ngf-select ng-model="file" name="file" ngf-min-height="100">Select</md-button>
+                                <br /> Multiple files
+                                <md-button ngf-select ng-model="files" ngf-multiple="true">Select</md-button>
+                                <br /> Drop files:
+                                <div ngf-drop ng-model="files" class="drop-box">Drop</div>
+                                <br />
+                                <button type="submit" ng-click="submit()">submit</button>
+                            </form>
+
+                            Upload right away after file selection:
+                            <md-button ngf-select="upload($file)">Upload on file select</md-button>
+                            <br />
+                            <md-button ngf-select="uploadFiles($files)" multiple="multiple">Upload on file select</md-button>
+                            <br /> Drop File:
+                            <div ngf-drop="uploadFiles($files)" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-pattern="'image/*,application/pdf'">Drop Images or PDFs files here</div>
+                            <br />
+                            <div ngf-no-file-drop>File Drag/Drop is not supported for this browser
+                                </div<br /> Image thumbnail: <img ngf-thumbnail="file || '/thumb.jpg'"> Audio preview:
+                                <audio controls ngf-src="file"></audio>
+                                <br /> Video preview:
+                                <video controls ngf-src="file"></video>
+-->
+
+                        </section>
                     </md-content>
                 </md-tab>
                 <md-tab label="Control">
@@ -36,7 +98,7 @@
                         </section>
                     </md-content>
                 </md-tab>
-                
+
             </md-tabs>
         </md-content>
     </div>
@@ -49,6 +111,7 @@
 
 
     <!-- Angular Material Library -->
+    <script src="js/ng-file-upload-all.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
     <script src="js/angular-ui-router.js"></script>
     <script src="js/app.module.js"></script>

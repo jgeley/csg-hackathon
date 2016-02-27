@@ -5,6 +5,22 @@ var methodOverride = require('method-override');
 var LocalStrategy = require('passport-local').Strategy;
 var bCrypt = require('bcrypt-nodejs');
 var flash = require('connect-flash');
+var multer = require('multer');
+var storage = multer.memoryStorage();
+var upload = multer({
+    storage: storage
+});
+
+// Requires multiparty 
+multiparty = require('connect-multiparty'),
+multipartyMiddleware = multiparty(),
+
+// Requires controller
+UserController = require('./controllers/UserController');
+
+var fs = require('fs');
+
+
 
 var db = require('./config/db');
 
@@ -40,19 +56,33 @@ app.use(express.static(__dirname + '/public'));
 app.engine('html', require('ejs').renderFile);
 app.set('views', __dirname + '/public');
 
-require('./app/passport')(app); 
-require('./app/routes.js')(app);// configure our routes
+require('./app/passport')(app);
+
+require('./app/routes.js')(app); // configure our routes
 
 app.listen(port);
 
-app.get('/control/start', function(req, res) {
-  console.log('do start');
+app.get('/control/start', function (req, res) {
+    console.log('do start');
 });
 
-app.get('/control/stop', function(req, res) {
-  console.log('do stop');
+app.get('/control/stop', function (req, res) {
+    console.log('do stop');
 });
-                   
+app.post('/upload/url',  multipartyMiddleware, UserController.uploadFile);
+//app.post('/upload/url', function (req, res) {
+//    console.log(req['_readableState'].buffer);
+//
+//
+//
+//    fs.writeFile('public/uploads/image.jpg', req['_readableState'].buffer, 'ascii',
+//        function (err) {
+//            if (err) throw err;
+//            console.log('It\'s saved!');
+//        }
+//    );
+//});
+
 console.log('Magic happens on port ' + port);
-          
+
 exports = module.exports = app;
