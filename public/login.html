@@ -1,0 +1,42 @@
+<!-- public/views/index.html -->
+<!--
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="libs/angular/angular.js"></script>
+  </head>
+  <body>
+    <div>
+      <label>Name:</label>
+      <input type="text" ng-model="yourName" placeholder="Enter a name here">
+      <hr>
+      <h1>Hello {{yourName}}!</h1>
+    </div>
+  </body>
+</html>-->
+
+<!doctype html>
+<html>
+  <head>
+    <title>Login Page</title>
+      <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.css">
+  </head>
+  <body>
+    <div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <h1 class="text-center login-title">Sign into our app
+        <div class="account-wall"><img src="https://cdn0.vox-cdn.com/images/verge/default-avatar.v9899025.gif" class="profile-img"/>
+          <form action="/login" method="POST" class="form-signin">
+            <input type="text" name="username" placeholder="Email" required="required" autofocus="autofocus" class="form-control"/>
+            <input type="password" name="password" placeholder="Password" required="required" class="form-control"/>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button><span class="clearfix"></span>
+          </form>
+        </div><a href="/signup" class="text-center new-account">Create an account</a>
+        <div id="message"></div>
+      </h1>
+    </div>
+  </div>
+</div>
+  </body>
+</html>

@@ -40,6 +40,7 @@ app.use(express.static(__dirname + '/public'));
 app.engine('html', require('ejs').renderFile);
 app.set('views', __dirname + '/public');
 
+require('./app/passport')(app); 
 require('./app/routes.js')(app);// configure our routes
 
 app.listen(port);

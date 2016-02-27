@@ -10,59 +10,13 @@
 </head>
 
 <body layout="column" ng-controller="AppCtrl as ctrl">
-
-    <!--
-    <md-toolbar class="md-menu-toolbar">
-        <div layout="row">
-            <div>
-                <h2 class="md-toolbar-tools">Syncronyzed Viewing App</h2>
-                <md-menu-bar>
-                    <md-menu class='active'>
-                        <button class='active' ng-click="ctrl.sampleAction('home', $event)">
-                            Home
-                        </button>
-                        <md-menu-content>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button ng-click="ctrl.sampleAction('Open', $event)">
-                                    
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button disabled="disabled" ng-click="ctrl.sampleAction('Rename', $event)">
-                                    
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-divider></md-menu-divider>
-                            <md-menu-item>
-                                <md-button ng-click="ctrl.sampleAction('Print', $event)">
-                                    
-                                </md-button>
-                            </md-menu-item>
-                        </md-menu-content>
-                    </md-menu>
-                    <md-menu>
-                        <button ng-click="ctrl.sampleAction('control', $event)">
-                            Control
-                        </button>
-                        <md-menu-content>
-                            <md-menu-item class="md-indent">
-                                <md-button ng-click="ctrl.sampleAction('undo', $event)">
-                                    
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item class="md-indent">
-                             
-                                <md-button ng-click="ctrl.sampleAction('redo', $event)">
-                                    
-                                </md-button>
-                            </md-menu-item>
-                        </md-menu-content>
-                    </md-menu>
-                </md-menu-bar>
-            </div>
+ <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span flex></span>
+            <md-button class="md-raised" href="/logout" style="width:100px;">Logout</md-button>
         </div>
     </md-toolbar>
--->
+     
     <div ng-cloak>
         <md-content>
             <md-tabs md-dynamic-height md-border-bottom>
@@ -82,6 +36,7 @@
                         </section>
                     </md-content>
                 </md-tab>
+                
             </md-tabs>
         </md-content>
     </div>
